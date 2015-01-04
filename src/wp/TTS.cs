@@ -1,5 +1,4 @@
-﻿/*
-
+/*
     Cordova Text-to-Speech Plugin
     https://github.com/vilic/cordova-plugin-tts
     
@@ -7,7 +6,6 @@
     https://github.com/vilic
 
     MIT License
-
 */
 
 using System;
@@ -27,7 +25,7 @@ namespace Cordova.Extension.Commands {
         [DataMember]
         public string locale;
         [DataMember]
-        public int? rate;
+        public double? rate;
     }
 
     class TTS : BaseCommand {
@@ -47,7 +45,7 @@ namespace Cordova.Extension.Commands {
             lastCallbackId = args[1];
 
             var locale = options.locale != null ? options.locale : "en-US";
-            var rate = options.rate != null ? options.rate : 1;
+            var rate = options.rate != null ? options.rate : 1.0;
 
             var ssml =
 @"<?xml version=""1.0""?>

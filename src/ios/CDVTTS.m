@@ -1,5 +1,4 @@
 /*
- 
     Cordova Text-to-Speech Plugin
     https://github.com/vilic/cordova-plugin-tts
  
@@ -7,7 +6,6 @@
     https://github.com/vilic
  
     MIT License
- 
 */
 
 #import <Cordova/CDV.h>
@@ -44,14 +42,14 @@
     
     NSString* text = [options objectForKey:@"text"];
     NSString* locale = [options objectForKey:@"locale"];
-    int rate = [[options objectForKey:@"rate"] integerValue];
+    double rate = [[options objectForKey:@"rate"] doubleValue];
     
     if (!locale || (id)locale == [NSNull null]) {
         locale = @"en-US";
     }
     
     if (!rate) {
-        rate = 1;
+        rate = 1.0;
     }
     
     AVSpeechUtterance* utterance = [[AVSpeechUtterance new] initWithString:text];
