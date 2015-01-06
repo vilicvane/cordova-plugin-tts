@@ -50,9 +50,9 @@ declare module TTS {
         /** text to speak */
         text: string;
         /** a string like 'en-US', 'zh-CN', etc */
-        locale: string;
+        locale?: string;
         /** speed rate, 0 ~ 1 */
-        rate: number;
+        rate?: number;
     }
 
     function speak(options: IOptions, onfulfill: () => void, onreject: (reason) => void): void;
