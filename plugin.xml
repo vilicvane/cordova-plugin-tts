@@ -4,7 +4,7 @@
   xmlns="http://apache.org/cordova/ns/plugins/1.0"
   xmlns:android="http://schemas.android.com/apk/res/android"
   id="com.wordsbaking.cordova.tts"
-  version="0.2.0">
+  version="0.2.1">
   <name>TTS</name>
   <description>Cordova Text-to-Speech Plugin</description>
   <author>VILIC VANE</author>
@@ -43,7 +43,6 @@
   
     <source-file src="src/wp/TTS.cs" />
   </platform>
-
 
   <!-- android -->
   <platform name="android">
