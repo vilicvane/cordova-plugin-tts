@@ -10,11 +10,11 @@
 
 */
 
-exports.speak = function (text, onfulfill, onreject) {
+exports.speak = function (text, onfulfilled, onrejected) {
     var ThenFail = window.ThenFail;
     var promise;
 
-    if (ThenFail && !onfulfill && !onreject) {
+    if (ThenFail && !onfulfilled && !onrejected) {
         promise = new ThenFail();
     }
     
@@ -31,14 +31,14 @@ exports.speak = function (text, onfulfill, onreject) {
         .exec(function () {
             if (promise) {
                 promise.resolve();
-            } else if (onfulfill) {
-                onfulfill();
+            } else if (onfulfilled) {
+                onfulfilled();
             }
         }, function (reason) {
             if (promise) {
                 promise.reject(reason);
-            } else if (onreject) {
-                onreject(reason);
+            } else if (onrejected) {
+                onrejected(reason);
             }
         }, 'TTS', 'speak', [options]);
 

@@ -38,11 +38,11 @@ TTS
 
 ## API Definitions
 
-The `onfulfill` callback will be called when the speech finishes,
-and the `onreject` callback (Windows Phone only) will be called when an error occurs.
+The `onfulfilled` callback will be called when the speech finishes,
+and the `onrejected` callback (Windows Phone only) will be called when an error occurs.
 
 If the API is invoked when it's still speaking, the previous speaking will be canceled immediately,
-but the `onfulfill` callback of the previous speaking will be called when it stops.
+but the `onfulfilled` callback of the previous speaking will be called when it stops.
 
 ```typescript
 declare module TTS {
@@ -55,8 +55,8 @@ declare module TTS {
         rate?: number;
     }
 
-    function speak(options: IOptions, onfulfill: () => void, onreject: (reason) => void): void;
-    function speak(text: string, onfulfill: () => void, onreject: (reason) => void): void;
+    function speak(options: IOptions, onfulfilled: () => void, onrejected: (reason) => void): void;
+    function speak(text: string, onfulfilled: () => void, onrejected: (reason) => void): void;
 
     /** for my own usage, or you may want to use my promise library ThenFail (https://github.com/vilic/thenfail)... */
     function speak(options: IOptions): ThenFail<void>;
