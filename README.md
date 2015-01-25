@@ -9,7 +9,7 @@ Android 4.0.3+ (API Level 15+)
 ## Installation
 
 ```sh
-cordova plugin install com.wordsbaking.cordova.tts
+cordova plugin add com.wordsbaking.cordova.tts
 ```
 
 ## Usage
