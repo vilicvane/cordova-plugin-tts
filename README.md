@@ -58,7 +58,7 @@ declare module TTS {
     function speak(options: IOptions, onfulfill: () => void, onreject: (reason) => void): void;
     function speak(text: string, onfulfill: () => void, onreject: (reason) => void): void;
 
-    /** for my own usage, or you may want to use my promise library... */
+    /** for my own usage, or you may want to use my promise library [ThenFail](https://github.com/vilic/thenfail)... */
     function speak(options: IOptions): ThenFail<void>;
     function speak(text: string): ThenFail<void>;
 }
