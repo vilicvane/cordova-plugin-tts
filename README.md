@@ -9,7 +9,7 @@ Android 4.0.3+ (API Level 15+)
 ## Installation
 
 ```sh
-cordova plugin add com.wordsbaking.cordova.tts
+cordova plugin add cordova-plugin-tts
 ```
 
 ## Usage
@@ -36,6 +36,8 @@ TTS
     });
 ```
 
+**Tips:** `speak` an empty string to interrupt.
+
 ## API Definitions
 
 The `onfulfilled` callback will be called when the speech finishes,
@@ -57,9 +59,5 @@ declare module TTS {
 
     function speak(options: IOptions, onfulfilled: () => void, onrejected: (reason) => void): void;
     function speak(text: string, onfulfilled: () => void, onrejected: (reason) => void): void;
-
-    /** for my own usage, or you may want to use my promise library ThenFail (https://github.com/vilic/thenfail)... */
-    function speak(options: IOptions): ThenFail<void>;
-    function speak(text: string): ThenFail<void>;
 }
 ```
