@@ -15,25 +15,28 @@ cordova plugin add cordova-plugin-tts
 ## Usage
 
 ```javascript
-// basic usage
-TTS
-    .speak('hello, world!', function () {
-        alert('success');
-    }, function (reason) {
-        alert(reason);
-    });
-
-// or with more options
-TTS
-    .speak({
-        text: 'hello, world!',
-        locale: 'en-GB',
-        rate: 0.75
-    }, function () {
-        alert('success');
-    }, function (reason) {
-        alert(reason);
-    });
+// make sure your the code gets executed only after `deviceready`.
+document.addEventListener('deviceready', function () {
+    // basic usage
+    TTS
+        .speak('hello, world!', function () {
+            alert('success');
+        }, function (reason) {
+            alert(reason);
+        });
+    
+    // or with more options
+    TTS
+        .speak({
+            text: 'hello, world!',
+            locale: 'en-GB',
+            rate: 0.75
+        }, function () {
+            alert('success');
+        }, function (reason) {
+            alert(reason);
+        });
+}, false);
 ```
 
 **Tips:** `speak` an empty string to interrupt.
