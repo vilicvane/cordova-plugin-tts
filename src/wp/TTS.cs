@@ -32,7 +32,9 @@ namespace Cordova.Extension.Commands {
         SpeechSynthesizer synth = new SpeechSynthesizer();
 
         string lastCallbackId;
-
+        public async void speak(string argsJSON) {
+          synth.CancelAll();
+        }
         public async void speak(string argsJSON) {
             if (lastCallbackId != null) {
                 DispatchCommandResult(new PluginResult(PluginResult.Status.OK), lastCallbackId);
