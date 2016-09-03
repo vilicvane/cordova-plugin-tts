@@ -26,3 +26,11 @@ exports.speak = function (text, onfulfilled, onrejected) {
             onrejected(reason);
         }, 'TTS', 'speak', [options]);
 };
+
+exports.stop = function (onfulfilled, onrejected) {
+    cordova.exec( function () {
+      onfulfilled();
+    }, function (reason){
+      onrejected(reason);
+     }, 'TTS', 'stop', []);
+};
