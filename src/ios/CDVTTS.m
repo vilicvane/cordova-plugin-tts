@@ -70,6 +70,6 @@
 }
 
 - (void)stop:(CDVInvokedUrlCommand*)command {
-  [synthesizer stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
+    [synthesizer stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
 }
 @end
