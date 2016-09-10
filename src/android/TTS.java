@@ -69,6 +69,8 @@ public class TTS extends CordovaPlugin implements OnInitListener {
             throws JSONException {
         if (action.equals("speak")) {
             speak(args, callbackContext);
+        } else if (action.equals("stop")) {
+            stop(args, callbackContext);
         } else {
             return false;
         }
@@ -90,6 +92,11 @@ public class TTS extends CordovaPlugin implements OnInitListener {
         }
     }
 
+    private void stop(JSONArray args, CallbackContext callbackContext)
+      throws JSONException, NullPointerException {
+        tts.stop();
+    }
+    
     private void speak(JSONArray args, CallbackContext callbackContext)
             throws JSONException, NullPointerException {
         JSONObject params = args.getJSONObject(0);
