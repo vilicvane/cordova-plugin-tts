@@ -34,3 +34,7 @@ exports.stop = function(onfulfilled, onrejected) {
         onrejected(reason);
      }, 'TTS', 'stop', []);
 };
+
+exports.checkLanguage = function(onfulfilled, onrejected) {
+    cordova.exec(onfulfilled, onrejected, 'TTS', 'checkLanguage', []);
+};
