@@ -16,6 +16,10 @@ import android.speech.tts.UtteranceProgressListener;
 
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.*;
+
+import org.apache.cordova.PluginResult;
+import org.apache.cordova.PluginResult.Status;
 
 /*
     Cordova Text-to-Speech Plugin
@@ -71,6 +75,8 @@ public class TTS extends CordovaPlugin implements OnInitListener {
             speak(args, callbackContext);
         } else if (action.equals("stop")) {
             stop(args, callbackContext);
+        } else if (action.equals("checkLanguage")) {
+            checkLanguage(args, callbackContext);
         } else {
             return false;
         }
@@ -95,6 +101,23 @@ public class TTS extends CordovaPlugin implements OnInitListener {
     private void stop(JSONArray args, CallbackContext callbackContext)
       throws JSONException, NullPointerException {
         tts.stop();
+    }
+
+    
+    private void checkLanguage(JSONArray args, CallbackContext callbackContext)
+      throws JSONException, NullPointerException {
+        Set<Locale> supportedLanguages = tts.getAvailableLanguages();
+        String languages = "";
+        if(supportedLanguages!= null) {
+            for (Locale lang : supportedLanguages) {
+                languages = languages + "," + lang;
+            }
+        }
+        if (languages != "") {
+            languages = languages.substring(1);
+        }
+        final PluginResult result = new PluginResult(PluginResult.Status.OK, languages);
+        callbackContext.sendPluginResult(result);
     }
     
     private void speak(JSONArray args, CallbackContext callbackContext)
