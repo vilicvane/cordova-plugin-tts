@@ -38,3 +38,7 @@ exports.stop = function(onfulfilled, onrejected) {
 exports.checkLanguage = function(onfulfilled, onrejected) {
     cordova.exec(onfulfilled, onrejected, 'TTS', 'checkLanguage', []);
 };
+
+exports.openInstallTts = function(onfulfilled, onrejected) {
+    cordova.exec(onfulfilled, onrejected, 'TTS', 'openInstallTts', []);
+};
