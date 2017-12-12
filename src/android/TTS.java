@@ -194,7 +194,7 @@ public class TTS extends CordovaPlugin implements OnInitListener {
 
         String[] localeArgs = locale.split("-");
         tts.setLanguage(new Locale(localeArgs[0], localeArgs[1]));
-        tts.setSpeechRate((float) rate);
+        tts.setSpeechRate((float) rate * 0.6f);
 
         tts.speak(text, TextToSpeech.QUEUE_FLUSH, ttsParams);
     }
