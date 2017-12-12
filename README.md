@@ -50,7 +50,7 @@ If the API is invoked when it's still speaking, the previous speaking will be ca
 but the `onfulfilled` callback of the previous speaking will be called when it stops.
 
 ```typescript
-declare module TTS {
+declare namespace TTS {
     interface IOptions {
         /** text to speak */
         text: string;
