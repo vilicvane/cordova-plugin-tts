@@ -11,7 +11,7 @@
 */
 
 exports.speak = function (text) {
-    return new Promise((resolve, reject) => {
+    return new Promise(function (resolve, reject) {
         var options = {};
 
         if (typeof text == 'string') {
@@ -25,19 +25,19 @@ exports.speak = function (text) {
 };
 
 exports.stop = function() {
-    return new Promise((resolve, reject) => {
+    return new Promise(function (resolve, reject) {
         cordova.exec(resolve, reject, 'TTS', 'stop', []);
     });
 };
 
 exports.checkLanguage = function() {
-    return new Promise((resolve, reject) => {
+    return new Promise(function (resolve, reject) {
         cordova.exec(resolve, reject, 'TTS', 'checkLanguage', []);
     });
 };
 
 exports.openInstallTts = function() {
-    return new Promise((resolve, reject) => {
+    return new Promise(function (resolve, reject) {
         cordova.exec(resolve, reject, 'TTS', 'openInstallTts', []);
     });
 };
