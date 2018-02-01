@@ -19,19 +19,19 @@ cordova plugin add cordova-plugin-tts
 document.addEventListener('deviceready', function () {
     // basic usage
     TTS
-        .speak('hello, world!', function () {
+        .speak('hello, world!').then(function () {
             alert('success');
         }, function (reason) {
             alert(reason);
         });
-    
+
     // or with more options
     TTS
         .speak({
             text: 'hello, world!',
             locale: 'en-GB',
             rate: 0.75
-        }, function () {
+        }).then(function () {
             alert('success');
         }, function (reason) {
             alert(reason);
@@ -40,14 +40,6 @@ document.addEventListener('deviceready', function () {
 ```
 
 **Tips:** `speak` an empty string to interrupt.
-
-## API Definitions
-
-The `onfulfilled` callback will be called when the speech finishes,
-and the `onrejected` callback (Windows Phone only) will be called when an error occurs.
-
-If the API is invoked when it's still speaking, the previous speaking will be canceled immediately,
-but the `onfulfilled` callback of the previous speaking will be called when it stops.
 
 ```typescript
 declare namespace TTS {
@@ -60,7 +52,10 @@ declare namespace TTS {
         rate?: number;
     }
 
-    function speak(options: IOptions, onfulfilled: () => void, onrejected: (reason) => void): void;
-    function speak(text: string, onfulfilled: () => void, onrejected: (reason) => void): void;
+    function speak(options: IOptions): Promise<void>;
+    function speak(text: string): Promise<void>;
+    function stop(): Promise<void>;
+    function checkLanguage(): Promise<string>;
+    function openInstallTts(): Promise<void>;
 }
 ```
