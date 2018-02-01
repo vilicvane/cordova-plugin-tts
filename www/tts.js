@@ -10,35 +10,34 @@
 
 */
 
-exports.speak = function (text, onfulfilled, onrejected) {
-    var options = {};
+exports.speak = function (text) {
+    return new Promise((resolve, reject) => {
+        var options = {};
 
-    if (typeof text == 'string') {
-        options.text = text;
-    } else {
-        options = text;
-    }
+        if (typeof text == 'string') {
+            options.text = text;
+        } else {
+            options = text;
+        }
 
-    cordova
-        .exec(function () {
-            onfulfilled();
-        }, function (reason) {
-            onrejected(reason);
-        }, 'TTS', 'speak', [options]);
+        cordova.exec(resolve, reject, 'TTS', 'speak', [options]);
+    });
 };
 
-exports.stop = function(onfulfilled, onrejected) {
-    cordova.exec(function () {
-        onfulfilled();
-    }, function(reason) {
-        onrejected(reason);
-     }, 'TTS', 'stop', []);
+exports.stop = function() {
+    return new Promise((resolve, reject) => {
+        cordova.exec(resolve, reject, 'TTS', 'stop', []);
+    });
 };
 
-exports.checkLanguage = function(onfulfilled, onrejected) {
-    cordova.exec(onfulfilled, onrejected, 'TTS', 'checkLanguage', []);
+exports.checkLanguage = function() {
+    return new Promise((resolve, reject) => {
+        cordova.exec(resolve, reject, 'TTS', 'checkLanguage', []);
+    });
 };
 
-exports.openInstallTts = function(onfulfilled, onrejected) {
-    cordova.exec(onfulfilled, onrejected, 'TTS', 'openInstallTts', []);
+exports.openInstallTts = function() {
+    return new Promise((resolve, reject) => {
+        cordova.exec(resolve, reject, 'TTS', 'openInstallTts', []);
+    });
 };
