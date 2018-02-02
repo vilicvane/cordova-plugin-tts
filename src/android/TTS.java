@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.os.Build;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnInitListener;
 import android.speech.tts.UtteranceProgressListener;
@@ -194,7 +195,12 @@ public class TTS extends CordovaPlugin implements OnInitListener {
 
         String[] localeArgs = locale.split("-");
         tts.setLanguage(new Locale(localeArgs[0], localeArgs[1]));
-        tts.setSpeechRate((float) rate * 0.8f);
+
+        if (Build.VERSION.SDK_INT >= 27) {
+            tts.setSpeechRate((float) rate * 0.7f);
+        } else {
+            tts.setSpeechRate((float) rate);
+        }
 
         tts.speak(text, TextToSpeech.QUEUE_FLUSH, ttsParams);
     }
