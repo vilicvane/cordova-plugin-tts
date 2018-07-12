@@ -75,13 +75,15 @@
     //utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:locale];
     utterance.voice = [AVSpeechSynthesisVoice voiceWithIdentifier:voice];
     // Rate expression adjusted manually for a closer match to other platform.
-    utterance.rate = (AVSpeechUtteranceMinimumSpeechRate * 1.5 + AVSpeechUtteranceDefaultSpeechRate) / 2.25 * rate * rate;
+    //utterance.rate = (AVSpeechUtteranceMinimumSpeechRate * 1.5 + AVSpeechUtteranceDefaultSpeechRate) / 2.25 * rate * rate;
     // workaround for https://github.com/vilic/cordova-plugin-tts/issues/21
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0) {
-       utterance.rate = utterance.rate * 2;
+    //if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0) {
+       //utterance.rate = utterance.rate * 2;
        // see http://stackoverflow.com/questions/26097725/avspeechuterrance-speed-in-ios-8
-    }
-    utterance.pitchMultiplier = 1.2;
+    //}
+    utterance.rate = 0.45;
+    utterance.pitchMultiplier = 1.0;
+    utterance.volume = 1.0;
     [synthesizer speakUtterance:utterance];
 }
 
