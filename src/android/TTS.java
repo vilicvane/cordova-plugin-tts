@@ -27,6 +27,7 @@ import android.content.Context;
 import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.speech.tts.Voice;
 
 /*
     Cordova Text-to-Speech Plugin
