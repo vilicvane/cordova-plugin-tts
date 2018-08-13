@@ -27,6 +27,7 @@ import android.content.Context;
 import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.speech.tts.Voice;
 
 /*
     Cordova Text-to-Speech Plugin
@@ -160,6 +161,7 @@ public class TTS extends CordovaPlugin implements OnInitListener {
         String text;
         String locale;
         double rate;
+        String voiceType;
 
         if (params.isNull("text")) {
             callbackContext.error(ERR_INVALID_OPTIONS);
@@ -195,6 +197,19 @@ public class TTS extends CordovaPlugin implements OnInitListener {
 
         String[] localeArgs = locale.split("-");
         tts.setLanguage(new Locale(localeArgs[0], localeArgs[1]));
+
+        voiceType = params.getString("voiceType");
+
+        if(voiceType.compareTo("Male")==0){
+            Voice voiceobj = new Voice("en-us-x-sfg#male_1-local",
+                            Locale.getDefault(), 1, 1, false, null);
+            tts.setVoice(voiceobj);
+        }
+        else{
+            Voice voiceobj = new Voice("en-us-x-sfg#female_1-local",
+                            Locale.getDefault(), 1, 1, false, null);
+            tts.setVoice(voiceobj);
+        }
 
         if (Build.VERSION.SDK_INT >= 27) {
             tts.setSpeechRate((float) rate * 0.7f);

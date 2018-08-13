@@ -30,7 +30,9 @@ document.addEventListener('deviceready', function () {
         .speak({
             text: 'hello, world!',
             locale: 'en-GB',
-            rate: 0.75
+            rate: 0.75,
+            /* voiceType: Male or Female */
+            voiceType:'Male'
         }).then(function () {
             alert('success');
         }, function (reason) {
