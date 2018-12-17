@@ -50,6 +50,8 @@ declare namespace TTS {
         locale?: string;
         /** speed rate, 0 ~ 1 */
         rate?: number;
+        /** ambient(iOS) */
+        category?: string;
     }
 
     function speak(options: IOptions): Promise<void>;

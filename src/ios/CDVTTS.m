@@ -36,9 +36,22 @@
 }
 
 - (void)speak:(CDVInvokedUrlCommand*)command {
+    
+    NSDictionary* options = [command.arguments objectAtIndex:0];
+    
+    NSString* text = [options objectForKey:@"text"];
+    NSString* locale = [options objectForKey:@"locale"];
+    double rate = [[options objectForKey:@"rate"] doubleValue];
+    NSString* category = [options objectForKey:@"category"];
+    
     [[AVAudioSession sharedInstance] setActive:NO withOptions:0 error:nil];
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback
-      withOptions:AVAudioSessionCategoryOptionDuckOthers error:nil];
+    if ([category isEqualToString:@"ambient"]) {
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient
+                                         withOptions:0 error:nil];
+    } else {
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback
+                                         withOptions:AVAudioSessionCategoryOptionDuckOthers error:nil];
+    }
 
     if (callbackId) {
         lastCallbackId = callbackId;
@@ -47,12 +60,6 @@
     callbackId = command.callbackId;
     
     [synthesizer stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
-    
-    NSDictionary* options = [command.arguments objectAtIndex:0];
-    
-    NSString* text = [options objectForKey:@"text"];
-    NSString* locale = [options objectForKey:@"locale"];
-    double rate = [[options objectForKey:@"rate"] doubleValue];
     
     if (!locale || (id)locale == [NSNull null]) {
         locale = @"en-US";
