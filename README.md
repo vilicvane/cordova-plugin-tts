@@ -48,8 +48,10 @@ declare namespace TTS {
         text: string;
         /** a string like 'en-US', 'zh-CN', etc */
         locale?: string;
-        /** speed rate, 0 ~ 1 */
+        /** default speed rate 1.0, 0 ~ 1 */
         rate?: number;
+        /** default pitch value 1.2, 0.5 ~ 2 */
+        pitch?: number;
         /** ambient(iOS) */
         category?: string;
     }
